@@ -3,6 +3,7 @@ import br.com.alura.screenmatch.calculos.FiltroRecomendacao;
 import br.com.alura.screenmatch.modelos.Episodio;
 import br.com.alura.screenmatch.modelos.Filme;
 import br.com.alura.screenmatch.modelos.Serie;
+import br.com.alura.screenmatch.modelos.Titulo;
 import java.util.ArrayList;
 
 public class Principal {
@@ -12,8 +13,6 @@ public class Principal {
         System.out.println("Duração do filme: " + meuFilme.getDuracaoEmMinutos());
 
         meuFilme.exibeFichaTecnica();
-        meuFilme.avalia(8);
-        meuFilme.avalia(5);
         meuFilme.avalia(10);
         System.out.println("Total de avaliações: " + meuFilme.getTotalDeAvaliacoes());
         System.out.println(meuFilme.pegaMedia());
@@ -27,6 +26,7 @@ public class Principal {
 
         Filme outroFilme = new Filme("Avatar 2", 2023);
         outroFilme.setDuracaoEmMinutos(200);
+        outroFilme.avalia(8);
 
         CalculadoraDeTempo calculadora = new CalculadoraDeTempo();
         calculadora.inclui(meuFilme);
@@ -43,10 +43,17 @@ public class Principal {
         episodio.setTotalVisualizacoes(300);
         filtro.filtra(episodio);
 
-        ArrayList<Filme> listaDeFilmes = new ArrayList<>();
-        listaDeFilmes.add(meuFilme);
-        listaDeFilmes.add(outroFilme);
-        System.out.println("Tamanho da Lilsta " + listaDeFilmes.size()  );
-        System.out.println(listaDeFilmes);
+        ArrayList<Titulo> lista = new ArrayList<>();
+        lista.add(meuFilme);
+        lista.add(outroFilme);
+        lista.add(lost);
+        System.out.println("Tamanho da Lista " + lista.size()  );
+        System.out.println(lista);
+        for (Titulo item : lista) {
+            System.out.println(item);
+            if (item instanceof Filme filme && filme.getClassificacao() > 2) {
+                System.out.println("Classificação: " + filme.getClassificacao());
+            }
+        }
     }
-}
+}   
