@@ -1,10 +1,15 @@
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+
 import br.com.alura.screenmatch.calculos.CalculadoraDeTempo;
+import br.com.alura.screenmatch.modelos.Filme;
 import br.com.alura.screenmatch.calculos.FiltroRecomendacao;
 import br.com.alura.screenmatch.modelos.Episodio;
-import br.com.alura.screenmatch.modelos.Filme;
 import br.com.alura.screenmatch.modelos.Serie;
 import br.com.alura.screenmatch.modelos.Titulo;
-import java.util.ArrayList;
 
 public class Principal {
     public static void main(String[] args) {
@@ -40,7 +45,7 @@ public class Principal {
         Episodio episodio = new Episodio();
         episodio.setNumero(1);
         episodio.setSerie(lost);
-        episodio.setTotalVisualizacoes(300);
+        episodio.setTotalVisualizacoes(50);
         filtro.filtra(episodio);
 
         ArrayList<Titulo> lista = new ArrayList<>();
@@ -55,5 +60,17 @@ public class Principal {
                 System.out.println("Classificação: " + filme.getClassificacao());
             }
         }
+
+        List<String> buscaPorArtistas = new ArrayList<>();
+        buscaPorArtistas.add("Adam Sandler");
+        buscaPorArtistas.add("Zion");
+        buscaPorArtistas.add("Bruna Marquezine");
+        buscaPorArtistas.add("Jaqueline");
+
+        Collections.sort(buscaPorArtistas);
+        Collections.sort(lista);
+        System.out.println(lista);
+        lista.sort(Comparator.comparing(Titulo::getAnoDeLancamento));
+        System.out.println(lista);
     }
 }   
