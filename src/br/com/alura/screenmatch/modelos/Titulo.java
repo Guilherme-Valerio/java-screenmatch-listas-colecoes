@@ -1,10 +1,10 @@
 package br.com.alura.screenmatch.modelos;
-import com.google.gson.annotations.SerializedName;
+//import com.google.gson.annotations.SerializedName;
 
 public class Titulo implements Comparable<Titulo>{
-    @SerializedName("Title")
+    //@SerializedName("Title")
     private String nome;
-    @SerializedName("Year")
+    //@SerializedName("Year")
     private int anoDeLancamento;
     private boolean incluidoNoPlano;
     private double somaDasAvaliacoes;
@@ -14,6 +14,12 @@ public class Titulo implements Comparable<Titulo>{
     public Titulo(String nome, int anoDeLancamento) {
         this.nome = nome;
         this.anoDeLancamento = anoDeLancamento;
+    }
+
+    public Titulo(TituloOmdb tituloOmdb){
+        this.nome = tituloOmdb.title();
+        this.anoDeLancamento = Integer.parseInt(tituloOmdb.year());
+        this.duracaoEmMinutos = Integer.parseInt(tituloOmdb.runtime().substring(0,3));
     }
 
     public String getNome() {
@@ -55,6 +61,7 @@ public class Titulo implements Comparable<Titulo>{
     public void exibeFichaTecnica(){
         System.out.println("Nome: " + nome);
         System.out.println("Ano de lançamento: " + anoDeLancamento);
+        System.out.println("Duração: " + duracaoEmMinutos);
     }
 
     public void avalia(double nota){
@@ -73,7 +80,7 @@ public class Titulo implements Comparable<Titulo>{
 
     @Override
     public String toString() {
-        return "Nome = '" + nome + '\'' + ", Ano de Lançamento = " + anoDeLancamento;
+        return "Nome = '" + nome + '\'' + ", Ano de Lançamento = " + anoDeLancamento + ", Duração = " + duracaoEmMinutos + " min";
     }
 
 

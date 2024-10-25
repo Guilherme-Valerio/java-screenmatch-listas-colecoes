@@ -3,9 +3,13 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.util.Scanner;
+
+import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import br.com.alura.screenmatch.modelos.Titulo;
+import br.com.alura.screenmatch.modelos.TituloOmdb;
 
 import java.net.http.HttpResponse;
 
@@ -15,7 +19,6 @@ import java.net.http.HttpResponse;
 
 public class PrincipalComBusca {
     public static void main(String[] args) throws IOException, InterruptedException {
-        Gson gson = new Gson();
         Scanner leitura = new Scanner(System.in);
         System.out.println("Digite um filme para buscar");
         var busca = leitura.nextLine();
@@ -29,8 +32,12 @@ public class PrincipalComBusca {
         HttpResponse<String> response = client
             .send(request, HttpResponse.BodyHandlers.ofString());
         System.out.println(response.body());
+        String json = response.body();
+        Gson gson = new GsonBuilder().setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE).create();
 
-        Titulo tituloJson = gson.fromJson(response.body(), Titulo.class);
+        TituloOmdb tituloJsonOmdb = gson.fromJson(json, TituloOmdb.class);
+        System.out.println(tituloJsonOmdb);
+        Titulo tituloJson = new Titulo(tituloJsonOmdb);
         System.out.println(tituloJson);
     }
 }
