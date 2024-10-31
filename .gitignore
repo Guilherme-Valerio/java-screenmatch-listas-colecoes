@@ -25,6 +25,8 @@ bin/
 /nbdist/
 /.nb-gradle/
 
-
 ### Mac OS ###
 .DS_Store
+
+filmes.json
+cep.json
