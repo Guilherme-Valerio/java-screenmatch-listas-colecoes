@@ -19,7 +19,7 @@ public class ConsultaCep {
                 .newHttpClient()
                 .send(request, HttpResponse.BodyHandlers.ofString());
                 return new Gson().fromJson(response.body(), Endereco.class);
-        } catch (IOException | InterruptedException ex) {
+        } catch (IOException | InterruptedException | IllegalStateException ex) {
             throw new RuntimeException("Não conseguir obter o enderoço a partir desse CEP");
         }
     }
