@@ -13,4 +13,5 @@ Projeto desenvolvido no terceiro curso da formação Java da Alura
 - Conhecer os recursos para manipulação dessa lista, como inclusão, exclusão, ordenação;
 - Fazer casting de objetos e identificar o tipo dos mesmo;
 - Construir os objetos já com valores e com diferentes critérios;
+- Utilização de API Request;
 - Avançar nos estudos e entender novos conceitos primordiais para o desenvolvimento de aplicações back-end.
