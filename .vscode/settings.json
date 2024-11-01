@@ -1,6 +1,5 @@
 {
   "java.project.referencedLibraries": [
-    "libs/**/*.jar", // Para incluir todos os JARs na pasta libs
-    "libs/gson-2.10.1.jar" // Incluindo especificamente o JAR do Gson
+    "libs/**/*.jar" // Isso já inclui todos os arquivos JAR dentro da pasta libs
   ]
 }

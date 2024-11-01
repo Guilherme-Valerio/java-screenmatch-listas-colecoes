@@ -11,16 +11,16 @@ public class Main {
         Scanner leitura = new Scanner(System.in);
         List<Endereco> listCep = new ArrayList<>();
         ConsultaCep consultaCep = new ConsultaCep();
-        String busca = "";
-        while(!busca.equalsIgnoreCase("sair")){
+        GeradorDeArquivo gerador = new GeradorDeArquivo();
+        String cep = "";
+        while(!cep.equalsIgnoreCase("sair")){
             System.out.println("Qual CEP deseja buscar?");
-            busca = leitura.nextLine();
+            cep = leitura.nextLine();
 
-            if (busca.equalsIgnoreCase("sair")) {
+            if (cep.equalsIgnoreCase("sair")) {
                 break;
             }
 
-            var cep = busca;
             try {
                 listCep.add(consultaCep.buscaEndereco(cep));
                 System.out.println(consultaCep.buscaEndereco(cep));
@@ -29,7 +29,6 @@ public class Main {
                 System.out.println(e.getMessage());
             }
         }
-        GeradorDeArquivo gerador = new GeradorDeArquivo();
         gerador.salvaJson(listCep);
         leitura.close();
     }
